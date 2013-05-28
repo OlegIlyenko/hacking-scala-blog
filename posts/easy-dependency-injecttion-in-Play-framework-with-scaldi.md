@@ -1,6 +1,6 @@
 ## Easy Dependency Injection in Play Framework with Scaldi
 
-In this post I would like to make small introduction to Scaldi and show you how easy it is to use it together with Play. [Scaldi](http://olegilyenko.github.io/scaldi/Scaldi.html) is dependency injection library for Scala. It's very lightweight (without any dependencies) and provides nice Scala DSL for binding dependencies and injecting them. It's more dynamic approach to do dependency injection in comparison to the cake pattern, because not everything is checked at the compile time. This can be seen as an disadvantage, but I personally believe, that there is place for this approach. It can be vary useful in many circumstances and many people can find it more natural (and easy), especially if they are coming from Java background.
+In this post I would like to make small introduction to Scaldi and show you how easy it is to use it together with Play. [Scaldi](http://scaldi.github.io/scaldi/Scaldi.html) is dependency injection library for Scala. It's very lightweight (without any dependencies) and provides nice Scala DSL for binding dependencies and injecting them. It's more dynamic approach to do dependency injection in comparison to the cake pattern, because not everything is checked at the compile time. This can be seen as an disadvantage, but I personally believe, that there is place for this approach. It can be vary useful in many circumstances and many people can find it more natural (and easy), especially if they are coming from Java background.
 
 There are only 3 most important traits that you need to know, in order to make dependency injection with Scaldi:
 
@@ -145,7 +145,7 @@ With Scaldi it's pretty easy to make. You just need to define `UserModule` like 
 
 `inDevMode`, `inTestMode` and `inProdMode` are just functions that produce `Condition` objects. `Condition`s are used by Scaldi to decide, whether binding is available for injection.
 
-I hope you liked this small introduction to [scaldi](http://olegilyenko.github.io/scaldi/Scaldi.html) and [scaldi-play](https://github.com/OlegIlyenko/scaldi-play). You can find example application, that I described here, in this github repo:
+I hope you liked this small introduction to [scaldi](http://scaldi.github.io/scaldi/Scaldi.html) and [scaldi-play](https://github.com/OlegIlyenko/scaldi-play). You can find example application, that I described here, in this github repo:
 
 [https://github.com/OlegIlyenko/scaldi-play-example](https://github.com/OlegIlyenko/scaldi-play-example)
 
