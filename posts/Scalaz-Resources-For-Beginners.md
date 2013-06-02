@@ -46,6 +46,7 @@ Here are some other resources for beginners:
 * [The Scalaz Guide](http://dnene.bitbucket.org/docs/scalaz-guide/initial.html)
 * [Learn you a scalaz - project on GitHub](https://github.com/jrwest/learn_you_a_scalaz)
 * [Jason Zaugg's Intro to Scalaz](http://vimeo.com/15264203) (by [Jason Zaugg](https://twitter.com/#!/retronym))
+* [learning Scalaz](http://eed3si9n.com/learning-scalaz/) (by [Eugene Yokota](https://twitter.com/eed3si9n))
 * [Debasish Ghosh - posts about scalaz](http://debasishg.blogspot.com/search/label/scalaz) - as far as I saw, he describes more advanced topics
 * [Functional IO in Scala with Scalaz](http://www.stackmob.com/2011/12/scalaz-post-part-2/) (from [StackMob](https://twitter.com/#!/stackmob))
 
