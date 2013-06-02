@@ -60,12 +60,10 @@ Now we will try to integrate our new module in the Play app. The first thing you
 	  val appVersion      = "1.0-SNAPSHOT"
 	
 	  val appDependencies = Seq(
-	    "com.github.scaldi" %% "scaldi-play" % "0.1.1"
+	    "com.github.scaldi" %% "scaldi-play" % "0.2"
 	  )
 	
-	  val main = play.Project(appName, appVersion, appDependencies).settings(
-	    resolvers += "Scaldi's repo" at "https://raw.github.com/OlegIlyenko/angelsmasterpiece-maven-repo/master"
-	  )
+	  val main = play.Project(appName, appVersion, appDependencies).settings()
 	}
 
 Now you are able to use Scaldi in the project. Play application normally has it's initialization logic in the `Global` object, so we need to add `ScaldiSupport` in it:
@@ -145,8 +143,8 @@ With Scaldi it's pretty easy to make. You just need to define `UserModule` like 
 
 `inDevMode`, `inTestMode` and `inProdMode` are just functions that produce `Condition` objects. `Condition`s are used by Scaldi to decide, whether binding is available for injection.
 
-I hope you liked this small introduction to [scaldi](http://scaldi.github.io/scaldi/Scaldi.html) and [scaldi-play](https://github.com/OlegIlyenko/scaldi-play). You can find example application, that I described here, in this github repo:
+I hope you liked this small introduction to [scaldi](http://scaldi.github.io/scaldi/Scaldi.html) and [scaldi-play](https://github.com/scaldi/scaldi-play). You can find example application, that I described here, in this github repo:
 
-[https://github.com/OlegIlyenko/scaldi-play-example](https://github.com/OlegIlyenko/scaldi-play-example)
+[https://github.com/scaldi/scaldi-play-example](https://github.com/scaldi/scaldi-play-example)
 
 Please feel free to fork and hack it :)
