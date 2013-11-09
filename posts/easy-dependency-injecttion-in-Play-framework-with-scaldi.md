@@ -53,18 +53,17 @@ In the module context you are able to instantiate `OfficialMessageService` becau
 
 ### Integration with Play App
 
-Now we will try to integrate our new module in the Play app. The first thing you need to do is to add dependency on **scaldi-play** and additional resolver in the project file (`project/Build.scala`). Something like this:
+Now we will try to integrate our new module in the Play app. The first thing you need to do is to add dependency on **scaldi-play** in the project file (`build.sbt`). Something like this:
 
-	object ApplicationBuild extends Build {
-	  val appName         = "scaldi-play-example"
-	  val appVersion      = "1.0-SNAPSHOT"
-	
-	  val appDependencies = Seq(
-	    "com.github.scaldi" %% "scaldi-play" % "0.2"
-	  )
-	
-	  val main = play.Project(appName, appVersion, appDependencies).settings()
-	}
+	name := "scaldi-play-example"
+
+	version := "1.0-SNAPSHOT"
+
+	libraryDependencies ++= Seq(
+	  "com.github.scaldi" %% "scaldi-play" % "0.2.2"
+	)
+
+	play.Project.playScalaSettings
 
 Now you are able to use Scaldi in the project. Play application normally has it's initialization logic in the `Global` object, so we need to add `ScaldiSupport` in it:
 
