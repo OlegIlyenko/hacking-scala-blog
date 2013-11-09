@@ -8,7 +8,7 @@ There are only 3 most important traits that you need to know, in order to make d
 * **Module** - gives you nice syntax to create bindings with `bind` and `binding`. `Module` also extends `Injector` trait and implicit `Injector` instance always available when you are defining your bindings
 * **Injectable** - the only responsibility of this trait is to provide you with `inject` function (so it just provides nice syntax for injecting dependencies). It's important to understand, that it's the only the purpose of it. So it completely stateless and knows nothing about actual bindings you have defined in the module. In order to actually find and inject dependencies, `inject` function always takes an implicit parameter of type `Injector`
 
-<!-- more -->
+[[MORE]]
 
 ### Defining Managed Classes
 
