@@ -39,7 +39,7 @@ I find it very nice, that named arguments are also supported. Each argument that
 	    }
 	}
 
-And it's usage (as you can see, argument name would be empty string if you don't use named argument):
+And its usage (as you can see, argument name would be empty string if you don't use named argument):
 
 	scala&gt;  test.createUser("abc", name = "John", age = 20)
 	You called 'createUser' method with following argiuments: =abc, name=John, age=20
@@ -54,7 +54,7 @@ Now comes setter/getter method (properties) support. If you want to handle metho
 	    def selectDynamic(name: String) = s"value of $name"
 	}
 
-And it's usage:
+And its usage:
 
 	scala&gt;  test.firstName
 	res0: String = value of firstName
@@ -65,7 +65,7 @@ And it's usage:
 
 ### `updateDynamic`
 
-This is setter part. You can use it to handle assignments. It's signature:
+This is setter part. You can use it to handle assignments. Its signature:
 
 	class DynamicTest extends Dynamic {
 	  def updateDynamic(name: String)(value: Any) {
@@ -73,27 +73,38 @@ This is setter part. You can use it to handle assignments. It's signature:
 	  }
 	}
 
-I actually had issues with this one. If you will try to use it in REPL (and some other contexts), you will get something like this:
+Since the REPL generates code to report a value after an assignment, the following won't work yet. (You can witness the generated code with the special `show` comment.)
 
-	scala&gt;  test.firstName = "John"
+	scala&gt;  test.firstName = "John" // show
+	      [...]
+	      test.firstName = "bob";
+	      val $ires0 = test.firstName
+	      [...]
 	:12: error: value selectDynamic is not a member of DynamicTest
 	val $ires0 = test.firstName
 	             ^
-Seems that compiler treats it as getter, and tries to find `selectDynamic`. I think, that the reason for this is a snapshot version of Scala 2.10 compiler that I currently using. So let's hope that it would be fixed soon. Meanwhile, you can test `updateDynamic` like this:
 
-	object MyApp extends App {
-	  val test = new DynamicTest
+You can avoid this effect by using a local statement:
 
-	  test.firstName = "John"
-	} 
+	scala&gt;  { test.name = "bob" ; () }
+	You have just updated property 'name' with value: bob
 
-This works as expected and prints:
+Or by just supplying `selectDynamic`:
 
-	You have just updated property 'firstName' with value: John
+	class DynamicTest extends Dynamic {
+	  var value: String = ""
+	  def updateDynamic(name: String)(value: Any) = this.value = s"$name is $value"
+	  def selectDynamic(name: String) = value
+	}
+
+With the expected result:
+
+	scala&gt;  test.name = "bob"
+	test.name: String = name is bob
 
 ### Parameterizable Extractors
 
-This was my dream for a long time! Wouldn't it be nice, if you can specify regexp directly in pattern matching expression instead of defining it elsewhere and then use your variable in pattern match or to extract specific elements of the `Map`? With type `Dynamic` you can actually archive this, and here is example it's usage:
+This was my dream for a long time! Wouldn't it be nice, if you can specify regexp directly in pattern matching expression instead of defining it elsewhere and then use your variable in pattern match or to extract specific elements of the `Map`? With type `Dynamic` you can actually archive this, and here is example its usage:
 
 	Map("firstName" -&gt; "John", "lastName" -&gt; "Doe") match {
 		case p.firstName.lastName.Map(
